@@ -1,0 +1,5 @@
+Branch,River node,Chainage,ID,Flow routing method,Delay,Shape,Water level method,ManningN,Slope,ManningMaxDepth,Width,Type
+E6,N5,0,Method 1,norouting,2.40E-09,0.2,manning,0.1,0.05,5,12,CatchmentRoutingMethodPriority
+E5,N4,0,Method 4,muskingum,2,0.5,manning,0.1,0.05,5,7,Regular
+E3,N1,0,Method 2,linearreservoir,2.40E-09,0.2,manning,0.05,0.02,5,10,RoutingMethod
+E2,N3,0,Method 3,norouting,2.40E-09,0.2,manning,0.05,0.02,5,10,RoutingMethod

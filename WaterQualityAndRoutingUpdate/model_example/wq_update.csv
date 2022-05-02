@@ -1,0 +1,3 @@
+location_short_name,parameter_names,data_files,item_numbers
+W6,BOD|NH4|P_tot,DHI_MbWaterUserNodes_WQPointSourcesTS.dfs0,1|3|5
+C1,BOD|NH4,DHI_MbWaterUserNodes_WQPointSourcesTS.dfs0,1|3

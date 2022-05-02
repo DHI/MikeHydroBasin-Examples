@@ -1,0 +1,557 @@
+// Created     : 2013-08-20 15:2:2
+// DLL id      : C:\Work\main\Products\bin\x64\pfs2004.dll
+// PFS version : Aug 19 2013 20:14:47
+// type = 2
+
+[ECO_LAB_SETUP]
+   DESCRIPTION = 'Mike Basin WQ model with oxygen'
+   ONLINE_HELP = ''
+   DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+   [MISC]
+      DESCRIPTION = 'Miscanellous Description'
+      ONLINE_HELP = 'Miscanellous Online help'
+      DOCUMENTATION = 'Miscanellous Documentation'
+      ECOLAB_VERSION = 2014.11
+      PARSER_VERSION = 2014.02
+      DOCUMENT_REVISION = 7
+      RANDSEED = 0
+      DEBUG_LEVEL = 0
+      DEBUG_LOG = ''
+      RANDOM_PARTICLE_DIR = 'NO'
+      BUILD_SPATIAL_TREE = 'NO'
+      CHECKSUM = '0'
+      OPTIMISE = 'YES'
+      TRIGONOMETRICS = 'Degree'
+   EndSect  // MISC
+
+   [STATE_VARIABLES]
+      DESCRIPTION = ''
+      ONLINE_HELP = ''
+      DOCUMENTATION = ''
+      [STATE_VARIABLE_1]
+         SYMBOL = 'BOD'
+         ID = 1
+         DESCRIPTION = 'BOD, Biogeochemical Oxgen Demand'
+         ONLINE_HELP = 'BOD, can be estimated from BOD5 measurments'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'WC'
+         TRANSPORT = 'ADVECTION_DISPERSION'
+         EUM_TYPE = 100404
+         UNIT = 'mg/l'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // STATE_VARIABLE_1
+
+      [STATE_VARIABLE_2]
+         SYMBOL = 'NH4'
+         ID = 2
+         DESCRIPTION = 'NH4, Ammonia'
+         ONLINE_HELP = 'NH4, Ammonia concentration'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'WC'
+         TRANSPORT = 'ADVECTION_DISPERSION'
+         EUM_TYPE = 100404
+         UNIT = 'mg/l'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // STATE_VARIABLE_2
+
+      [STATE_VARIABLE_3]
+         SYMBOL = 'NO3'
+         ID = 3
+         DESCRIPTION = 'NO3, Nitrate'
+         ONLINE_HELP = 'NO3, Nitrate concentration'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'WC'
+         TRANSPORT = 'ADVECTION_DISPERSION'
+         EUM_TYPE = 100404
+         UNIT = 'mg/l'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // STATE_VARIABLE_3
+
+      [STATE_VARIABLE_4]
+         SYMBOL = 'P_tot'
+         ID = 4
+         DESCRIPTION = 'P_tot, total phosphorus concentration'
+         ONLINE_HELP = 'Ptot, total Phosphorus concentration'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'WC'
+         TRANSPORT = 'ADVECTION_DISPERSION'
+         EUM_TYPE = 100404
+         UNIT = 'mg/l'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // STATE_VARIABLE_4
+
+      [STATE_VARIABLE_5]
+         SYMBOL = 'EColi'
+         ID = 5
+         DESCRIPTION = 'E.Coli bacteria count'
+         ONLINE_HELP = 'EColi, bacteria count'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'WC'
+         TRANSPORT = 'ADVECTION_DISPERSION'
+         EUM_TYPE = 100008
+         UNIT = 'bacteria/100 ml'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // STATE_VARIABLE_5
+
+      [STATE_VARIABLE_6]
+         SYMBOL = 'USER'
+         ID = 6
+         DESCRIPTION = 'User concentration variable with 1st order decay'
+         ONLINE_HELP = 'User concentration variable with 1st order decay'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'WC'
+         TRANSPORT = 'ADVECTION_DISPERSION'
+         EUM_TYPE = 100404
+         UNIT = 'mg/l'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // STATE_VARIABLE_6
+
+   EndSect  // STATE_VARIABLES
+
+   [CONSTANTS]
+      DESCRIPTION = ''
+      ONLINE_HELP = ''
+      DOCUMENTATION = ''
+      [CONSTANT_1]
+         SYMBOL = 'RateCorr'
+         ID = 7
+         DESCRIPTION = 'Temperature coefficient'
+         ONLINE_HELP = 'RateCorr, temperature dependency for all rates'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 999
+         UNIT = 'undefined'
+         DEFAULT_VALUE = 1.07177
+         MIN_VALUE = 1
+         MAX_VALUE = 1.1746
+      EndSect  // CONSTANT_1
+
+      [CONSTANT_2]
+         SYMBOL = 'kd3'
+         ID = 8
+         DESCRIPTION = 'kd3, Decay rate BOD (20°C)'
+         ONLINE_HELP = 'kd3, degradation rate coefficient for BOD at 20°C'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 100150
+         UNIT = '/d'
+         DEFAULT_VALUE = 0.1
+         MIN_VALUE = 0
+         MAX_VALUE = 10
+      EndSect  // CONSTANT_2
+
+      [CONSTANT_3]
+         SYMBOL = 'k4'
+         ID = 9
+         DESCRIPTION = 'k4, Nitrification rate (20°C)'
+         ONLINE_HELP = 'k4, Nitrification rate at 20°C'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 100150
+         UNIT = '/d'
+         DEFAULT_VALUE = 0.2
+         MIN_VALUE = 0
+         MAX_VALUE = 10
+      EndSect  // CONSTANT_3
+
+      [CONSTANT_4]
+         SYMBOL = 'k6'
+         ID = 10
+         DESCRIPTION = 'k6, Denitrification rate (20°C)'
+         ONLINE_HELP = 'k6, Denitrification rate at 20°C'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 100150
+         UNIT = '/d'
+         DEFAULT_VALUE = 0.2
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // CONSTANT_4
+
+      [CONSTANT_5]
+         SYMBOL = 'kPtot'
+         ID = 11
+         DESCRIPTION = 'kptot, Decay rate P_tot (20°C)'
+         ONLINE_HELP = 'kptot, degradation rate for total Phosphorus at 20°C'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 100150
+         UNIT = '/d'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // CONSTANT_5
+
+      [CONSTANT_6]
+         SYMBOL = 'kEColi'
+         ID = 12
+         DESCRIPTION = 'kEColi, Decay rate for E.Coli (20°C)'
+         ONLINE_HELP = 'kEColi, degradation rate for E.Coli at 20°C'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 100150
+         UNIT = '/d'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // CONSTANT_6
+
+      [CONSTANT_7]
+         SYMBOL = 'kUser'
+         ID = 13
+         DESCRIPTION = 'kUser, Decay rate for user defined substance (20°C)'
+         ONLINE_HELP = 'kUser, degradation rate for user defined substance at 20°C'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 100150
+         UNIT = '/d'
+         DEFAULT_VALUE = 0
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // CONSTANT_7
+
+      [CONSTANT_8]
+         SYMBOL = 'Yd'
+         ID = 14
+         DESCRIPTION = 'Yd, N/BOD ratio'
+         ONLINE_HELP = 'Nitrogen content in organic matter, mg NH3-H/ mg BOD'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 999
+         UNIT = 'fraction'
+         DEFAULT_VALUE = 0.1
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // CONSTANT_8
+
+      [CONSTANT_9]
+         SYMBOL = 'VollenweiderCoef'
+         ID = 15
+         DESCRIPTION = 'VollenweiderCoef, used for P sedimentation'
+         ONLINE_HELP = 'Controlls P sedimentation, must be zero in rivers and only be defined in reservoiurs/lakes'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'YES'
+         BUILT_IN_ID = -1
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 999
+         UNIT = 'undefined'
+         DEFAULT_VALUE = 1
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // CONSTANT_9
+
+      [CONSTANT_10]
+         SYMBOL = 'dt'
+         ID = 16
+         DESCRIPTION = 'dt, ECOLab time step'
+         ONLINE_HELP = 'dt, ECOLab time step'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'NO'
+         BUILT_IN_ID = 20
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         EUM_TYPE = 999
+         UNIT = 'Seconds'
+         DEFAULT_VALUE = 30
+         MIN_VALUE = 1
+         MAX_VALUE = 86400
+      EndSect  // CONSTANT_10
+
+   EndSect  // CONSTANTS
+
+   [FORCINGS]
+      DESCRIPTION = ''
+      ONLINE_HELP = ''
+      DOCUMENTATION = ''
+      [FORCING_1]
+         SYMBOL = 'Temp'
+         ID = 17
+         DESCRIPTION = 'Water temperature'
+         ONLINE_HELP = 'Water temperature'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         IS_USER_SPECIFIED = 'NO'
+         BUILT_IN_ID = 6
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         EUM_TYPE = 999
+         UNIT = 'degrees C'
+         DEFAULT_VALUE = 10
+         MIN_VALUE = 0
+         MAX_VALUE = 100
+      EndSect  // FORCING_1
+
+   EndSect  // FORCINGS
+
+   [AUXILIARY_VARIABLES]
+      DESCRIPTION = ''
+      ONLINE_HELP = ''
+      DOCUMENTATION = ''
+      [AUXILIARY_VARIABLE_1]
+         SYMBOL = 'temp_corr'
+         ID = 18
+         DESCRIPTION = 'Temperature correction for all rate coefficients'
+         ONLINE_HELP = 'Temperature correction for all rate coefficients'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'undefined'
+         EXPRESSION = '"Arrhenius20(RateCorr, Temp)"'
+      EndSect  // AUXILIARY_VARIABLE_1
+
+      [AUXILIARY_VARIABLE_2]
+         SYMBOL = 'MonthLength'
+         ID = 19
+         DESCRIPTION = 'Month length in days'
+         ONLINE_HELP = 'Length of the current month in days'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'NONE'
+         UNIT = 'days'
+         EXPRESSION = '"IF (MONTH == 12, 31 , DAYNUMBER(YEAR, MONTH+1, 1) - DAYNUMBER(YEAR, MONTH, 1))"'
+      EndSect  // AUXILIARY_VARIABLE_2
+
+      [AUXILIARY_VARIABLE_3]
+         SYMBOL = 'ResidenceTime'
+         ID = 20
+         DESCRIPTION = 'ResidenceTime used in Vollenweider model'
+         ONLINE_HELP = 'ResidenceTime used in Vollenweider model, as rel. mount of a current month to a std month'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'HORISONTAL'
+         UNIT = 'sec/std.month'
+         EXPRESSION = '"dt * (365.25 / 12 ) / MonthLength"'
+      EndSect  // AUXILIARY_VARIABLE_3
+
+      [AUXILIARY_VARIABLE_4]
+         SYMBOL = 'PSedRate'
+         ID = 21
+         DESCRIPTION = 'P Sedimentation rate in lakes'
+         ONLINE_HELP = 'P Sedimentation rate in lakes, when VollenweiderCoef <> 0'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'undefined'
+         EXPRESSION = '"if ( VollenweiderCoef == 0, 0,  (1 - ( VollenweiderCoef / (1+sqrt(ResidenceTime)))))"'
+      EndSect  // AUXILIARY_VARIABLE_4
+
+   EndSect  // AUXILIARY_VARIABLES
+
+   [PROCESSES]
+      DESCRIPTION = ''
+      ONLINE_HELP = ''
+      DOCUMENTATION = ''
+      [PROCESS_1]
+         SYMBOL = 'BOD_Degradation'
+         ID = 22
+         DESCRIPTION = 'Decay of BOD'
+         ONLINE_HELP = 'Decay of BOD'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"kd3 * temp_corr * BOD"'
+      EndSect  // PROCESS_1
+
+      [PROCESS_2]
+         SYMBOL = 'BOD_NH4_Release'
+         ID = 23
+         DESCRIPTION = 'Ammonium release due BOD decay'
+         ONLINE_HELP = 'Ammonium release due BOD decay'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"Yd * BOD_Degradation"'
+      EndSect  // PROCESS_2
+
+      [PROCESS_3]
+         SYMBOL = 'Nitrification'
+         ID = 24
+         DESCRIPTION = 'Nitrification'
+         ONLINE_HELP = 'Nitrification'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"k4 * temp_corr * NH4"'
+      EndSect  // PROCESS_3
+
+      [PROCESS_4]
+         SYMBOL = 'Denitrification'
+         ID = 25
+         DESCRIPTION = 'Denitrification'
+         ONLINE_HELP = 'Denitrification'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"k6 * temp_corr * NO3"'
+      EndSect  // PROCESS_4
+
+      [PROCESS_5]
+         SYMBOL = 'Ptot_Degradation'
+         ID = 26
+         DESCRIPTION = 'Decay of of total Phosphorus'
+         ONLINE_HELP = 'Degradation of total Phosphorus'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"kPtot * temp_corr * P_tot"'
+      EndSect  // PROCESS_5
+
+      [PROCESS_6]
+         SYMBOL = 'EColi_Degradation'
+         ID = 27
+         DESCRIPTION = 'Decay of E.Coli'
+         ONLINE_HELP = 'Decay of E.Coli'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"kEColi * temp_corr * EColi"'
+      EndSect  // PROCESS_6
+
+      [PROCESS_7]
+         SYMBOL = 'User_Degradation'
+         ID = 28
+         DESCRIPTION = 'Decay of user defined concnetration'
+         ONLINE_HELP = 'Decay of user defined concnetration'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"kUser * temp_corr * USER"'
+      EndSect  // PROCESS_7
+
+      [PROCESS_8]
+         SYMBOL = 'P_DepositInSediment'
+         ID = 29
+         DESCRIPTION = 'P deposition in sediments based on Vollenweider formula'
+         ONLINE_HELP = 'DepositInSediment, P deposition in sediments based on Vollenweider formula'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         OUTPUT = 'NO'
+         PROCESS_TYPE = 'TRANSFORMATION'
+         SCOPE = 'WC'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l/d'
+         EXPRESSION = '"P_tot * PSedRate"'
+      EndSect  // PROCESS_8
+
+   EndSect  // PROCESSES
+
+   [DERIVED_OUTPUTS]
+      DESCRIPTION = ''
+      ONLINE_HELP = ''
+      DOCUMENTATION = ''
+      [DERIVED_OUTPUT_1]
+         ID = 30
+         DESCRIPTION = 'BOD5, derived from BOD'
+         ONLINE_HELP = 'BOD5, derived from BOD'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l'
+         FORMAT = 'INSTANTANEOUS'
+         EXPRESSION = '"BOD * (1 - exp( -kd3 * 5))"'
+      EndSect  // DERIVED_OUTPUT_1
+
+      [DERIVED_OUTPUT_2]
+         ID = 31
+         DESCRIPTION = 'N_tot, sum of NH4 and NO3'
+         ONLINE_HELP = 'Sum of NH4 and NO3'
+         DOCUMENTATION = 'Mike Basin WQ Scientific Documentation.docx'
+         SCOPE = 'NOT_SPECIFIED'
+         SPATIAL_VARIATION = 'HORISONTAL_AND_VERTICAL'
+         UNIT = 'mg/l'
+         FORMAT = 'INSTANTANEOUS'
+         EXPRESSION = '"NH4 + NO3"'
+      EndSect  // DERIVED_OUTPUT_2
+
+   EndSect  // DERIVED_OUTPUTS
+
+   [STATE_VARIABLE_EQUATIONS]
+      [STATE_VARIABLE_EQUATION_1]
+         BOD = '"-BOD_Degradation"'
+      EndSect  // STATE_VARIABLE_EQUATION_1
+
+      [STATE_VARIABLE_EQUATION_2]
+         NH4 = '"BOD_NH4_Release - Nitrification"'
+      EndSect  // STATE_VARIABLE_EQUATION_2
+
+      [STATE_VARIABLE_EQUATION_3]
+         NO3 = '"Nitrification - Denitrification"'
+      EndSect  // STATE_VARIABLE_EQUATION_3
+
+      [STATE_VARIABLE_EQUATION_4]
+         P_tot = '"-Ptot_Degradation - P_DepositInSediment"'
+      EndSect  // STATE_VARIABLE_EQUATION_4
+
+      [STATE_VARIABLE_EQUATION_5]
+         EColi = '"-EColi_Degradation"'
+      EndSect  // STATE_VARIABLE_EQUATION_5
+
+      [STATE_VARIABLE_EQUATION_6]
+         USER = '"-User_Degradation"'
+      EndSect  // STATE_VARIABLE_EQUATION_6
+
+   EndSect  // STATE_VARIABLE_EQUATIONS
+
+EndSect  // ECO_LAB_SETUP
+
+
